@@ -1,240 +1,40 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Treino Rápido - Biologia (ENEM 2025)</title>
-<style>
-  :root {
-    --bg:#f7fbf9;--card:#fff;--accent:#b8e0d2;
-    --accent2:#ffe5a7;--accent3:#d6c8ff;--text:#111;
-  }
-  body{font-family:Inter,Arial,sans-serif;margin:0;background:var(--bg);color:var(--text)}
-  header{background:linear-gradient(90deg,var(--accent),var(--accent2));padding:18px 20px}
-  header h1{margin:0;font-size:22px}
-  .container{max-width:1000px;margin:18px auto;padding:12px}
-  h2.section-title{margin:20px 0 12px;background:var(--accent3);padding:8px 12px;border-radius:10px;font-size:18px}
-  .grid{display:grid;grid-template-columns:1fr;gap:12px}
-  .card{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,0.06);transition:.2s}
-  .card:hover{transform:translateY(-2px)}
-  .qnum{font-weight:700;color:#444}
-  .question{margin:8px 0;font-size:16px}
-  .hint{display:none;margin-top:8px;padding:10px;border-radius:8px;background:var(--accent3);font-size:14px}
-  .controls{display:flex;gap:8px;margin-top:10px}
-  button{border:0;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:600}
-  .btn-show{background:#2d7a63;color:#fff}
-  .btn-done{background:#e6e6e6}
-  footer{margin-top:18px;text-align:center;color:#555;font-size:13px}
-  .illustration{text-align:center;margin-bottom:6px}
-  .illustration img{width:80px;height:80px;object-fit:contain;border-radius:8px}
-  @media(min-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
-</style>
-</head>
-<body>
-<header>
-  <h1>Treino Rápido: Biologia (ENEM 2025)</h1>
-</header>
+<!-- GRID DE MATÉRIAS -->
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
+  <a href="matematica.html" class="card bg-slate-800/60 border border-blue-500/20 rounded-2xl p-8 text-center hover:bg-slate-800/80">
+    <div class="text-5xl mb-3">📐</div>
+    <h3 class="text-xl font-bold text-blue-400">Matemática</h3>
+    <p class="text-gray-400 text-sm mt-2">Funções, geometria, estatística e mais.</p>
+  </a>
 
-<main class="container">
-  <p>Clique em <strong>Mostrar dica</strong> para ver a pista curta — ideal para revisão rápida.</p>
+  <a href="fisica.html" class="card bg-slate-800/60 border border-cyan-500/20 rounded-2xl p-8 text-center hover:bg-slate-800/80">
+    <div class="text-5xl mb-3">⚡</div>
+    <h3 class="text-xl font-bold text-cyan-400">Física</h3>
+    <p class="text-gray-400 text-sm mt-2">Movimentos, energia, eletricidade e ondas.</p>
+  </a>
 
-  <!-- ECOLOGIA -->
-  <h2 class="section-title">🌱 Ecologia</h2>
-  <section class="grid">
-    <div class="card">
-      <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3069/3069172.png"></div>
-      <div class="qnum">1. Relações ecológicas</div>
-      <div class="question">O que caracteriza o mutualismo?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint1">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint1" class="hint">Dica: ambas as espécies se beneficiam (flor e polinizador).</div>
-    </div>
-    <div class="card">
-      <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/5751/5751411.png"></div>
-      <div class="qnum">2. Ciclos biogeoquímicos</div>
-      <div class="question">Qual ciclo envolve fixação biológica e adubos?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint2">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint2" class="hint">Dica: ciclo do nitrogênio — bactérias e NH₃.</div>
-    </div>
-    <div class="card">
-      <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/189/189001.png"></div>
-      <div class="qnum">3. Cadeias alimentares</div>
-      <div class="question">Quem são os decompositores?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint3">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint3" class="hint">Dica: fungos e bactérias que reciclam matéria orgânica.</div>
-    </div>
-    <div class="card">
-      <div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/684/684908.png"></div>
-      <div class="qnum">4. Impactos ambientais</div>
-      <div class="question">O que é eutrofização?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint4">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint4" class="hint">Dica: excesso de nutrientes → algas → falta de oxigênio.</div>
-    </div>
-  </section>
+  <a href="quimica.html" class="card bg-slate-800/60 border border-rose-500/20 rounded-2xl p-8 text-center hover:bg-slate-800/80">
+    <div class="text-5xl mb-3">⚗️</div>
+    <h3 class="text-xl font-bold text-rose-400">Química</h3>
+    <p class="text-gray-400 text-sm mt-2">Estrutura atômica, ligações e reações.</p>
+  </a>
 
-  <!-- CITOLOGIA -->
-  <h2 class="section-title">🔬 Citologia</h2>
-  <section class="grid">
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3627/3627763.png"></div>
-      <div class="qnum">5. Células</div><div class="question">Qual a diferença básica entre procarionte e eucarionte?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint5">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint5" class="hint">Dica: presença ou não de núcleo delimitado por membrana.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/4149/4149647.png"></div>
-      <div class="qnum">6. Organelas</div><div class="question">Qual organela é o “centro energético” da célula?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint6">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint6" class="hint">Dica: mitocôndria — respiração celular e ATP.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/4186/4186129.png"></div>
-      <div class="qnum">7. Membrana plasmática</div><div class="question">O que significa transporte passivo?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint7">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint7" class="hint">Dica: sem gasto de energia; ocorre por difusão ou osmose.</div></div>
-  </section>
+  <a href="biologia2.html" class="card bg-slate-800/60 border border-green-500/20 rounded-2xl p-8 text-center hover:bg-slate-800/80">
+    <div class="text-5xl mb-3">🔬</div>
+    <h3 class="text-xl font-bold text-green-400">Biologia</h3>
+    <p class="text-gray-400 text-sm mt-2">Genética, ecologia, fisiologia e evolução.</p>
+  </a>
 
-  <!-- GENÉTICA -->
-  <h2 class="section-title">🧬 Genética</h2>
-  <section class="grid">
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/2490/2490316.png"></div>
-      <div class="qnum">8. Alelos</div><div class="question">O que é um alelo recessivo?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint8">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint8" class="hint">Dica: manifesta-se só em homozigose.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/2761/2761100.png"></div>
-      <div class="qnum">9. Código genético</div><div class="question">O que é um gene?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint9">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint9" class="hint">Dica: trecho do DNA que codifica uma proteína.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3433/3433135.png"></div>
-      <div class="qnum">10. Mutação</div><div class="question">O que é mutação gênica?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint10">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint10" class="hint">Dica: alteração na sequência de bases do DNA.</div></div>
-  </section>
+  <a href="lousa_interativa.html" class="card bg-slate-800/60 border border-yellow-500/20 rounded-2xl p-8 text-center hover:bg-slate-800/80">
+    <div class="text-5xl mb-3">🧮</div>
+    <h3 class="text-xl font-bold text-yellow-400">Lousa Interativa</h3>
+    <p class="text-gray-400 text-sm mt-2">Desenhe, anote e salve suas ideias.</p>
+  </a>
 
-  <!-- FISIOLOGIA HUMANA -->
-  <h2 class="section-title">🩸 Fisiologia Humana</h2>
-  <section class="grid">
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3209/3209265.png"></div>
-      <div class="qnum">11. Sistema circulatório</div><div class="question">Qual sua principal função?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint11">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint11" class="hint">Dica: transporte de gases, nutrientes e resíduos.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/4233/4233755.png"></div>
-      <div class="qnum">12. Sistema respiratório</div><div class="question">Onde ocorre a troca gasosa?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint12">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint12" class="hint">Dica: nos alvéolos pulmonares (O₂ entra, CO₂ sai).</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/5397/5397216.png"></div>
-      <div class="qnum">13. Sistema digestório</div><div class="question">Qual o papel do intestino delgado?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint13">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint13" class="hint">Dica: absorção de nutrientes e digestão final.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/1997/1997654.png"></div>
-      <div class="qnum">14. Sistema excretor</div><div class="question">Qual a função dos rins?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint14">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint14" class="hint">Dica: filtram o sangue e formam a urina.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/4333/4333606.png"></div>
-      <div class="qnum">15. Sistema nervoso</div><div class="question">Qual é a função dos neurônios?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint15">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint15" class="hint">Dica: conduzem impulsos elétricos pelo corpo.</div></div>
-  </section>
+  <a href="formulas_essenciais.html" class="card bg-slate-800/60 border border-purple-500/20 rounded-2xl p-8 text-center hover:bg-slate-800/80">
+    <div class="text-5xl mb-3">🧬</div>
+    <h3 class="text-xl font-bold text-purple-400">Fórmulas Essenciais</h3>
+    <p class="text-gray-400 text-sm mt-2">As principais fórmulas de todas as matérias.</p>
+  </a>
+</div>
 
-  <!-- FISIOLOGIA VEGETAL -->
-  <h2 class="section-title">🌿 Fisiologia Vegetal</h2>
-  <section class="grid">
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3014/3014981.png"></div>
-      <div class="qnum">16. Fotossíntese</div><div class="question">Qual a reação geral da fotossíntese?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint16">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint16" class="hint">Dica: CO₂ + H₂O + luz → glicose + O₂.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/2821/2821723.png"></div>
-      <div class="qnum">17. Transpiração</div><div class="question">Onde ocorre a perda de água na planta?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint17">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint17" class="hint">Dica: nos estômatos das folhas.</div></div>
-  </section>
 
-  <!-- EVOLUÇÃO -->
-  <h2 class="section-title">🦋 Evolução</h2>
-  <section class="grid">
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/616/616408.png"></div>
-      <div class="qnum">18. Seleção natural</div><div class="question">O que é seleção natural?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint18">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint18" class="hint">Dica: os mais adaptados sobrevivem e se reproduzem.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/1157/1157767.png"></div>
-      <div class="qnum">19. Especiação</div><div class="question">O que causa a formação de novas espécies?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint19">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint19" class="hint">Dica: isolamento reprodutivo e mutações acumuladas.</div></div>
-  </section>
-
-  <!-- BIOTECNOLOGIA E SAÚDE -->
-  <h2 class="section-title">🧪 Biotecnologia e Saúde</h2>
-  <section class="grid">
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3131/3131388.png"></div>
-      <div class="qnum">20. OGM</div><div class="question">O que é um organismo geneticamente modificado?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint20">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint20" class="hint">Dica: DNA alterado por engenharia genética.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/2933/2933245.png"></div>
-      <div class="qnum">21. Vacinas</div><div class="question">Como agem as vacinas?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint21">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint21" class="hint">Dica: estimulam a produção de anticorpos e memória imunológica.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/4320/4320459.png"></div>
-      <div class="qnum">22. Antibióticos</div><div class="question">Contra que tipo de organismo atuam?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint22">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint22" class="hint">Dica: apenas contra bactérias (não vírus).</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/5017/5017074.png"></div>
-      <div class="qnum">23. Doenças virais</div><div class="question">O que diferencia vírus de células?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint23">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint23" class="hint">Dica: não têm metabolismo próprio, só replicam em hospedeiro.</div></div>
-  </section>
-
-  <!-- GENÉTICA APLICADA -->
-  <h2 class="section-title">🧫 Genética Aplicada</h2>
-  <section class="grid">
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/1076/1076362.png"></div>
-      <div class="qnum">24. DNA e RNA</div><div class="question">Qual a principal diferença estrutural entre DNA e RNA?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint24">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint24" class="hint">Dica: DNA tem timina e dupla hélice; RNA tem uracila e fita simples.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/4323/4323000.png"></div>
-      <div class="qnum">25. Engenharia genética</div><div class="question">O que faz a enzima de restrição?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint25">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint25" class="hint">Dica: corta o DNA em locais específicos.</div></div>
-  </section>
-
-  <!-- ECOLOGIA APLICADA -->
-  <h2 class="section-title">🌎 Ecologia Aplicada e Sustentabilidade</h2>
-  <section class="grid">
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png"></div>
-      <div class="qnum">26. Fragmentação</div><div class="question">O que é fragmentação de habitat?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint26">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint26" class="hint">Dica: quebra do ambiente em partes isoladas → perda de biodiversidade.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3171/3171026.png"></div>
-      <div class="qnum">27. Efeito estufa</div><div class="question">Qual sua causa principal?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint27">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint27" class="hint">Dica: acúmulo de CO₂ e CH₄ na atmosfera.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3313/3313889.png"></div>
-      <div class="qnum">28. Desmatamento</div><div class="question">Qual impacto ambiental mais direto do desmatamento?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint28">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint28" class="hint">Dica: perda de solo fértil e de espécies nativas.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/4249/4249867.png"></div>
-      <div class="qnum">29. Recursos renováveis</div><div class="question">Dê um exemplo de fonte de energia renovável.</div>
-      <div class="controls"><button class="btn-show" data-hint="hint29">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint29" class="hint">Dica: solar, eólica, biomassa ou hidrelétrica.</div></div>
-    <div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3089/3089747.png"></div>
-      <div class="qnum">30. Reciclagem</div><div class="question">Por que é importante reciclar?</div>
-      <div class="controls"><button class="btn-show" data-hint="hint30">Mostrar dica</button><button class="btn-done" data-done>Já decorei</button></div>
-      <div id="hint30" class="hint">Dica: reduz resíduos e economiza recursos naturais.</div></div>
-  </section>
-
-  <footer>
-    30 questões para revisão rápida — treine, revise e marque as decoradas ✅
-  </footer>
-</main>
-
-<script>
-document.querySelectorAll('.btn-show').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const id=btn.dataset.hint,el=document.getElementById(id);
-    if(!el)return;
-    el.style.display=el.style.display==='block'?'none':'block';
-    btn.textContent=el.style.display==='block'?'Ocultar dica':'Mostrar dica';
-  });
-});
-document.querySelectorAll('[data-done]').forEach(b=>{
-  b.addEventListener('click',()=>{
-    const c=b.closest('.card');
-    c.style.opacity=c.style.opacity==='0.45'?'1':'0.45';
-  });
-});
-</script>
-</body>
-</html>

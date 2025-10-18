@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matemática ENEM 2025 - Estudo Completo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+        }
+        
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .timer {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 min-h-full text-white">
+    
+    <!-- Header -->
+    <header class="bg-slate-900/90 backdrop-blur-md shadow-xl sticky top-0 z-40 border-b border-blue-500/20">
+        <nav class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="text-3xl">📐</div>
+                    <h1 class="text-2xl font-bold gradient-text">Matemática ENEM 2025</h1>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <div class="bg-blue-600/20 px-4 py-2 rounded-full border border-blue-500/30">
+                        <span class="text-sm">Progresso Geral: <span id="progressoGeral" class="font-bold text-blue-400">0%</span></span>
+                    </div>
+                    <button onclick="toggleCalculadora()" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg transition-colors">
+                        🧮 Calculadora
+                    </button>
+                </div>
+                
+                <button id="menuBtn" class="md:hidden p-2 text-blue-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Dashboard -->
+    <section class="max-w-7xl mx-auto px-6 py-8">
+        <div class="grid md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-blue-600/20 p-6 rounded-xl border border-blue-500/30 text-center">
+                <div class="text-3xl mb-2">📊</div>
+                <h3 class="font-bold text-lg">Temas Estudados</h3>
+                <p class="text-2xl font-bold text-blue-400" id="temasEstudados">0/10</p>
+            </div>
+            
+            <div class="bg-green-600/20 p-6 rounded-xl border border-green-500/30 text-center">
+                <div class="text-3xl mb-2">✅</div>
+                <h3 class="font-bold text-lg">Simulados Feitos</h3>
+                <p class="text-2xl font-bold text-green-400" id="simuladosFeitos">0</p>
+            </div>
+            
+            <div class="bg-purple-600/20 p-6 rounded-xl border border-purple-500/30 text-center">
+                <div class="text-3xl mb-2">🎯</div>
+                <h3 class="font-bold text-lg">Acertos Médios</h3>
+                <p class="text-2xl font-bold text-purple-400" id="acertosMedios">0%</p>
+            </div>
+            
+            <div class="bg-orange-600/20 p-6 rounded-xl border border-orange-500/30 text-center">
+                <div class="text-3xl mb-2">⏱️</div>
+                <h3 class="font-bold text-lg">Tempo Médio</h3>
+                <p class="text-2xl font-bold text-orange-400" id="tempoMedio">0min</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Temas Principais -->
+    <section class="max-w-7xl mx-auto px-6 py-8">
+        <h2 class="text-3xl font-bold text-center mb-8 gradient-text">🥇 Temas Mais Cobrados (70% das questões)</h2>
+        
+        <div class="grid lg:grid-cols-2 gap-8">
+            <!-- Geometria -->
+            <div class="bg-slate-800/60 p-8 rounded-2xl border border-blue-500/20 card-hover backdrop-blur-sm">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl font-bold text-blue-400">📐 Geometria Plana e Espacial</h3>
+                    <span class="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">80-90 questões</span>
+                </div>
+                
+                <p class="text-gray-300 mb-6">Áreas, volumes, teorema de Pitágoras, semelhança de triângulos, geometria espacial.</p>
+                
+                <div class="grid grid-cols-3 gap-4">
+                    <button onclick="abrirVideo('geometria')" class="bg-red-600 hover:bg-red-700 p-4 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📹</div>
+                        <div class="text-sm font-semibold">Vídeo Aula</div>
+                    </button>
+                    
+                    <button onclick="abrirMapaMental('geometria')" class="bg-blue-600 hover:bg-blue-700 p-4 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🧠</div>
+                        <div class="text-sm font-semibold">Mapa Mental</div>
+                    </button>
+                    
+                    <button onclick="abrirSimulado('geometria')" class="bg-green-600 hover:bg-green-700 p-4 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="text-sm font-semibold">Simulado</div>
+                    </button>
+                </div>
+                
+                <div class="mt-4 bg-slate-700 rounded-full h-2">
+                    <div class="bg-blue-500 h-2 rounded-full progress-bar" style="width: 0%" data-tema="geometria"></div>
+                </div>
+                <p class="text-sm text-gray-400 mt-2">Progresso: <span class="progresso-texto" data-tema="geometria">0%</span></p>
+            </div>
+
+            <!-- Estatística -->
+            <div class="bg-slate-800/60 p-8 rounded-2xl border border-blue-500/20 card-hover backdrop-blur-sm">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl font-bold text-green-400">📊 Estatística e Probabilidade</h3>
+                    <span class="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">70-80 questões</span>
+                </div>
+                
+                <p class="text-gray-300 mb-6">Média, mediana, moda, interpretação de gráficos, probabilidade simples e condicional.</p>
+                
+                <div class="grid grid-cols-3 gap-4">
+                    <button onclick="abrirVideo('estatistica')" class="bg-red-600 hover:bg-red-700 p-4 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📹</div>
+                        <div class="text-sm font-semibold">Vídeo Aula</div>
+                    </button>
+                    
+                    <button onclick="abrirMapaMental('estatistica')" class="bg-blue-600 hover:bg-blue-700 p-4 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🧠</div>
+                        <div class="text-sm font-semibold">Mapa Mental</div>
+                    </button>
+                    
+                    <button onclick="abrirSimulado('estatistica')" class="bg-green-600 hover:bg-green-700 p-4 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="text-sm font-semibold">Simulado</div>
+                    </button>
+                </div>
+                
+                <div class="mt-4 bg-slate-700 rounded-full h-2">
+                    <div class="bg-green-500 h-2 rounded-full progress-bar" style="width: 0%" data-tema="estatistica"></div>
+                </div>
+                <p class="text-sm text-gray-400 mt-2">Progresso: <span class="progresso-texto" data-tema="estatistica">0%</span></p>
+            </div>
+
+            <!-- Funções -->
+            <div class="bg-slate-800/60 p-8 rounded-2xl border border-blue-500/20 card-hover backdrop-blur-sm">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl font-bold text-purple-400">📈 Funções</h3>
+                    <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold">60-70 questões</span>
+                </div>
+                
+                <p class="text-gray-300 mb-6">Função do 1º e 2º grau, análise de gráficos, máximos e mínimos, função exponencial.</p>
+                
+                <div class="grid grid-cols-3 gap-4">
+                    <button onclick="abrirVideo('funcoes')" class="bg-red-600 hover:bg-red-700 p-4 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📹</div>
+                        <div class="text-sm font-semibold">Vídeo Aula</div>
+                    </button>
+                    
+                    <button onclick="abrirMapaMental('funcoes')" class="bg-blue-600 hover:bg-blue-700 p-4 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🧠</div>
+                        <div class="text-sm font-semibold">Mapa Mental</div>
+                    </button>
+                    
+                    <button onclick="abrirSimulado('funcoes')" class="bg-green-600 hover:bg-green-700 p-4 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="text-sm font-semibold">Simulado</div>
+                    </button>
+                </div>
+                
+                <div class="mt-4 bg-slate-700 rounded-full h-2">
+                    <div class="bg-purple-500 h-2 rounded-full progress-bar" style="width: 0%" data-tema="funcoes"></div>
+                </div>
+                <p class="text-sm text-gray-400 mt-2">Progresso: <span class="progresso-texto" data-tema="funcoes">0%</span></p>
+            </div>
+
+            <!-- Matemática Financeira -->
+            <div class="bg-slate-800/60 p-8 rounded-2xl border border-blue-500/20 card-hover backdrop-blur-sm">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl font-bold text-yellow-400">💰 Matemática Financeira</h3>
+                    <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold">50-60 questões</span>
+                </div>
+                
+                <p class="text-gray-300 mb-6">Porcentagem, juros simples e compostos, descontos, financiamentos, investimentos.</p>
+                
+                <div class="grid grid-cols-3 gap-4">
+                    <button onclick="abrirVideo('financeira')" class="bg-red-600 hover:bg-red-700 p-4 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📹</div>
+                        <div class="text-sm font-semibold">Vídeo Aula</div>
+                    </button>
+                    
+                    <button onclick="abrirMapaMental('financeira')" class="bg-blue-600 hover:bg-blue-700 p-4 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">🧠</div>
+                        <div class="text-sm font-semibold">Mapa Mental</div>
+                    </button>
+                    
+                    <button onclick="abrirSimulado('financeira')" class="bg-green-600 hover:bg-green-700 p-4 rounded-lg text-center transition-colors">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="text-sm font-semibold">Simulado</div>
+                    </button>
+                </div>
+                
+                <div class="mt-4 bg-slate-700 rounded-full h-2">
+                    <div class="bg-yellow-500 h-2 rounded-full progress-bar" style="width: 0%" data-tema="financeira"></div>
+                </div>
+                <p class="text-sm text-gray-400 mt-2">Progresso: <span class="progresso-texto" data-tema="financeira">0%</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Temas Médios -->
+    <section class="max-w-7xl mx-auto px-6 py-8">
+        <h2 class="text-3xl font-bold text-center mb-8 gradient-text">🥈 Temas de Frequência Média</h2>
+        
+        <div class="grid lg:grid-cols-3 gap-6">
+            <!-- Proporcionalidade -->
+            <div class="bg-slate-800/60 p-6 rounded-xl border border-blue-500/20 card-hover backdrop-blur-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-cyan-400">⚖️ Proporcionalidade</h3>
+                    <span class="bg-yellow-600 text-white px-2 py-1 rounded-full text-xs font-bold">45-55</span>
+                </div>
+                
+                <p class="text-gray-300 text-sm mb-4">Razão, proporção, regra de três, escalas, grandezas proporcionais.</p>
+                
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="abrirVideo('proporcionalidade')" class="bg-red-600 hover:bg-red-700 p-3 rounded text-center transition-colors">
+                        <div class="text-lg mb-1">📹</div>
+                        <div class="text-xs">Vídeo</div>
+                    </button>
+                    
+                    <button onclick="abrirSimulado('proporcionalidade')" class="bg-green-600 hover:bg-green-700 p-3 rounded text-center transition-colors">
+                        <div class="text-lg mb-1">📝</div>
+                        <div class="text-xs">Simulado</div>
+                    </button>
+                </div>
+                
+                <div class="mt-3 bg-slate-700 rounded-full h-1.5">
+                    <div class="bg-cyan-500 h-1.5 rounded-full progress-bar" style="width: 0%" data-tema="proporcionalidade"></div>
+                </div>
+            </div>
+
+            <!-- Análise Combinatória -->
+            <div class="bg-slate-800/60 p-6 rounded-xl border border-blue-500/20 card-hover backdrop-blur-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-pink-400">🎲 Análise Combinatória</h3>
+                    <span class="bg-yellow-600 text-white px-2 py-1 rounded-full text-xs font-bold">35-45</span>
+                </div>
+                
+                <p class="text-gray-300 text-sm mb-4">Permutação, arranjo, combinação, princípio fundamental da contagem.</p>
+                
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="abrirVideo('combinatoria')" class="bg-red-600 hover:bg-red-700 p-3 rounded text-center transition-colors">
+                        <div class="text-lg mb-1">📹</div>
+                        <div class="text-xs">Vídeo</div>
+                    </button>
+                    
+                    <button onclick="abrirSimulado('combinatoria')" class="bg-green-600 hover:bg-green-700 p-3 rounded text-center transition-colors">
+                        <div class="text-lg mb-1">📝</div>
+                        <div class="text-xs">Simulado</div>
+                    </button>
+                </div>
+                
+                <div class="mt-3 bg-slate-700 rounded-full h-1.5">
+                    <div class="bg-pink-500 h-1.5 rounded-full progress-bar" style="width: 0%" data-tema="combinatoria"></div>
+                </div>
+            </div>
+
+            <!-- Trigonometria -->
+            <div class="bg-slate-800/60 p-6 rounded-xl border border-blue-500/20 card-hover backdrop-blur-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-indigo-400">📐 Trigonometria</h3>
+                    <span class="bg-yellow-600 text-white px-2 py-1 rounded-full text-xs font-bold">30-40</span>
+                </div>
+                
+                <p class="text-gray-300 text-sm mb-4">Seno, cosseno, tangente, lei dos senos e cossenos, ciclo trigonométrico.</p>
+                
+                <div class="grid grid-cols-1 gap-2">
+                    <button onclick="abrirSimulado('trigonometria')" class="bg-green-600 hover:bg-green-700 p-3 rounded text-center transition-colors">
+                        <div class="text-lg mb-1">📝</div>
+                        <div class="text-xs">Simulado</div>
+                    </button>
+                </div>
+                
+                <div class="mt-3 bg-slate-700 rounded-full h-1.5">
+                    <div class="bg-indigo-500 h-1.5 rounded-full progress-bar" style="width: 0%" data-tema="trigonometria"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para Vídeos -->
+    <div id="modalVideo" class="modal">
+        <div class="bg-slate-800 p-8 rounded-2xl max-w-4xl w-full mx-4 border border-blue-500/20">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="tituloVideo" class="text-2xl font-bold gradient-text"></h3>
+                <button onclick="fecharModal('modalVideo')" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            
+            <div class="aspect-video bg-slate-900 rounded-lg mb-6 flex items-center justify-center">
+                <div class="text-center">
+                    <div class="text-6xl mb-4">📹</div>
+                    <p class="text-gray-400">Vídeo explicativo sobre <span id="temaVideo"></span></p>
+                    <p class="text-sm text-gray-500 mt-2">Em uma implementação real, aqui seria incorporado um player de vídeo</p>
+                </div>
+            </div>
+            
+            <button onclick="marcarVideoAssistido()" class="w-full bg-green-600 hover:bg-green-700 py-3 rounded-lg font-semibold transition-colors">
+                ✅ Marcar como Assistido
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal para Mapa Mental -->
+    <div id="modalMapa" class="modal">
+        <div class="bg-slate-800 p-8 rounded-2xl max-w-5xl w-full mx-4 border border-blue-500/20">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="tituloMapa" class="text-2xl font-bold gradient-text"></h3>
+                <button onclick="fecharModal('modalMapa')" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            
+            <div class="bg-slate-900 rounded-lg p-8 mb-6 min-h-96">
+                <div class="text-center">
+                    <div class="text-6xl mb-4">🧠</div>
+                    <p class="text-gray-400 mb-4">Mapa Mental Interativo - <span id="temaMapa"></span></p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+                        <div class="bg-blue-600/20 p-4 rounded-lg border border-blue-500/30">
+                            <div class="text-2xl mb-2">📊</div>
+                            <p class="text-sm">Conceitos Básicos</p>
+                        </div>
+                        <div class="bg-green-600/20 p-4 rounded-lg border border-green-500/30">
+                            <div class="text-2xl mb-2">📐</div>
+                            <p class="text-sm">Fórmulas Principais</p>
+                        </div>
+                        <div class="bg-purple-600/20 p-4 rounded-lg border border-purple-500/30">
+                            <div class="text-2xl mb-2">🎯</div>
+                            <p class="text-sm">Dicas de Prova</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="marcarMapaEstudado()" class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold transition-colors">
+                ✅ Marcar como Estudado
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal para Simulado -->
+    <div id="modalSimulado" class="modal">
+        <div class="bg-slate-800 p-8 rounded-2xl max-w-4xl w-full mx-4 border border-blue-500/20">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="tituloSimulado" class="text-2xl font-bold gradient-text"></h3>
+                <div class="flex items-center space-x-4">
+                    <div class="timer text-xl text-blue-400" id="cronometro">15:00</div>
+                    <button onclick="fecharModal('modalSimulado')" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+                </div>
+            </div>
+            
+            <div id="questaoAtual" class="mb-6">
+                <!-- Questões serão inseridas aqui dinamicamente -->
+            </div>
+            
+            <div class="flex justify-between items-center">
+                <button id="btnAnterior" onclick="questaoAnterior()" class="bg-gray-600 hover:bg-gray-700 px-6 py-2 rounded-lg transition-colors" disabled>
+                    ← Anterior
+                </button>
+                
+                <div class="text-center">
+                    <span class="text-gray-400">Questão <span id="numeroQuestao">1</span> de <span id="totalQuestoes">5</span></span>
+                </div>
+                
+                <button id="btnProximo" onclick="proximaQuestao()" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg transition-colors">
+                    Próxima →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculadora -->
+    <div id="calculadora" class="fixed bottom-4 right-4 bg-slate-800 p-4 rounded-xl border border-blue-500/20 shadow-xl" style="display: none;">
+        <div class="flex justify-between items-center mb-4">
+            <h4 class="font-bold text-blue-400">Calculadora</h4>
+            <button onclick="toggleCalculadora()" class="text-gray-400 hover:text-white">&times;</button>
+        </div>
+        
+        <div class="grid grid-cols-4 gap-2 w-64">
+            <input type="text" id="display" class="col-span-4 bg-slate-900 text-white p-3 rounded text-right text-xl" readonly>
+            
+            <button onclick="limparCalculadora()" class="bg-red-600 hover:bg-red-700 p-3 rounded font-bold">C</button>
+            <button onclick="apagarUltimo()" class="bg-gray-600 hover:bg-gray-700 p-3 rounded">←</button>
+            <button onclick="adicionarDisplay('/')" class="bg-blue-600 hover:bg-blue-700 p-3 rounded">÷</button>
+            <button onclick="adicionarDisplay('*')" class="bg-blue-600 hover:bg-blue-700 p-3 rounded">×</button>
+            
+            <button onclick="adicionarDisplay('7')" class="bg-slate-700 hover:bg-slate-600 p-3 rounded">7</button>
+            <button onclick="adicionarDisplay('8')" class="bg-slate-700 hover:bg-slate-600 p-3 rounded">8</button>
+            <button onclick="adicionarDisplay('9')" class="bg-slate-700 hover:bg-slate-600 p-3 rounded">9</button>
+            <button onclick="adicionarDisplay('-')" class="bg-blue-600 hover:bg-blue-700 p-3 rounded">-</button>
+            
+            <button onclick="adicionarDisplay('4')" class="bg-slate-700 hover:bg-slate-600 p-3 rounded">4</button>
+            <button onclick="adicionarDisplay('5')" class="bg-slate-700 hover:bg-slate-600 p-3 rounded">5</button>
+            <button onclick="adicionarDisplay('6')" class="bg-slate-700 hover:bg-slate-600 p-3 rounded">6</button>
+            <button onclick="adicionarDisplay('+')" class="bg-blue-600 hover:bg-blue-700 p-3 rounded">+</button>
+            
+            <button onclick="adicionarDisplay('1')" class="bg-slate-700 hover:bg-slate-600 p-3 rounded">1</button>
+            <button onclick="adicionarDisplay('2')" class="bg-slate-700 hover:bg-slate-600 p-3 rounded">2</button>
+            <button onclick="adicionarDisplay('3')" class="bg-slate-700 hover:bg-slate-600 p-3 rounded">3</button>
+            <button onclick="calcular()" class="bg-green-600 hover:bg-green-700 p-3 rounded row-span-2">=</button>
+            
+            <button onclick="adicionarDisplay('0')" class="bg-slate-700 hover:bg-slate-600 p-3 rounded col-span-2">0</button>
+            <button onclick="adicionarDisplay('.')" class="bg-slate-700 hover:bg-slate-600 p-3 rounded">.</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-8 border-t border-blue-500/20 mt-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h4 class="text-xl font-bold gradient-text mb-4">Matemática ENEM 2025</h4>
+            <p class="text-gray-400 mb-4">
+                Sua plataforma completa de estudos para arrasar na prova! 🚀
+            </p>
+            <p class="text-gray-500 text-sm">
+                © 2024 - Feito com 💙 para estudantes que querem conquistar seus sonhos
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Dados dos temas e questões
+        const temas = {
+            geometria: {
+                nome: 'Geometria Plana e Espacial',
+                questoes: [
+                    {
+                        pergunta: 'Um triângulo retângulo tem catetos de 3 cm e 4 cm. Qual é a medida da hipotenusa?',
+                        alternativas: ['5 cm', '6 cm', '7 cm', '8 cm', '9 cm'],
+                        correta: 0,
+                        explicacao: 'Pelo teorema de Pitágoras: h² = 3² + 4² = 9 + 16 = 25, logo h = 5 cm'
+                    },
+                    {
+                        pergunta: 'A área de um círculo com raio 10 cm é aproximadamente:',
+                        alternativas: ['314 cm²', '628 cm²', '100 cm²', '200 cm²', '400 cm²'],
+                        correta: 0,
+                        explicacao: 'Área = π × r² = π × 10² = 100π ≈ 314 cm²'
+                    },
+                    {
+                        pergunta: 'O volume de um cubo com aresta de 5 cm é:',
+                        alternativas: ['25 cm³', '75 cm³', '125 cm³', '150 cm³', '200 cm³'],
+                        correta: 2,
+                        explicacao: 'Volume do cubo = aresta³ = 5³ = 125 cm³'
+                    }
+                ]
+            },
+            estatistica: {
+                nome: 'Estatística e Probabilidade',
+                questoes: [
+                    {
+                        pergunta: 'Em uma turma, as notas foram: 7, 8, 6, 9, 7, 8, 10. Qual é a média?',
+                        alternativas: ['7,5', '7,8', '8,0', '8,2', '8,5'],
+                        correta: 1,
+                        explicacao: 'Média = (7+8+6+9+7+8+10)/7 = 55/7 ≈ 7,8'
+                    },
+                    {
+                        pergunta: 'Ao lançar um dado, qual a probabilidade de sair um número par?',
+                        alternativas: ['1/6', '2/6', '3/6', '4/6', '5/6'],
+                        correta: 2,
+                        explicacao: 'Números pares: 2, 4, 6. São 3 casos favoráveis em 6 possíveis = 3/6 = 1/2'
+                    }
+                ]
+            },
+            funcoes: {
+                nome: 'Funções',
+                questoes: [
+                    {
+                        pergunta: 'Dada f(x) = 2x + 3, qual é f(5)?',
+                        alternativas: ['10', '11', '12', '13', '14'],
+                        correta: 3,
+                        explicacao: 'f(5) = 2(5) + 3 = 10 + 3 = 13'
+                    },
+                    {
+                        pergunta: 'O vértice da parábola y = x² - 4x + 3 tem coordenada x igual a:',
+                        alternativas: ['1', '2', '3', '4', '5'],
+                        correta: 1,
+                        explicacao: 'x do vértice = -b/2a = -(-4)/2(1) = 4/2 = 2'
+                    }
+                ]
+            },
+            financeira: {
+                nome: 'Matemática Financeira',
+                questoes: [
+                    {
+                        pergunta: 'Um produto custa R$ 200,00 e tem desconto de 15%. Qual o valor final?',
+                        alternativas: ['R$ 170,00', 'R$ 175,00', 'R$ 180,00', 'R$ 185,00', 'R$ 190,00'],
+                        correta: 0,
+                        explicacao: 'Desconto = 15% de 200 = 30. Valor final = 200 - 30 = R$ 170,00'
+                    },
+                    {
+                        pergunta: 'Aplicando R$ 1000 a juros simples de 2% ao mês por 6 meses, o montante será:',
+                        alternativas: ['R$ 1100', 'R$ 1120', 'R$ 1200', 'R$ 1240', 'R$ 1260'],
+                        correta: 1,
+                        explicacao: 'J = C × i × t = 1000 × 0,02 × 6 = 120. M = C + J = 1000 + 120 = R$ 1120'
+                    }
+                ]
+            },
+            proporcionalidade: {
+                nome: 'Proporcionalidade',
+                questoes: [
+                    {
+                        pergunta: 'Se 3 operários fazem um trabalho em 12 dias, quantos dias levarão 4 operários?',
+                        alternativas: ['8 dias', '9 dias', '10 dias', '15 dias', '16 dias'],
+                        correta: 1,
+                        explicacao: 'Regra de três inversa: 3×12 = 4×x → x = 36/4 = 9 dias'
+                    }
+                ]
+            },
+            combinatoria: {
+                nome: 'Análise Combinatória',
+                questoes: [
+                    {
+                        pergunta: 'De quantas maneiras podemos arranjar 5 pessoas em fila?',
+                        alternativas: ['20', '60', '120', '240', '360'],
+                        correta: 2,
+                        explicacao: 'Permutação de 5 elementos: P₅ = 5! = 5×4×3×2×1 = 120'
+                    }
+                ]
+            },
+            trigonometria: {
+                nome: 'Trigonometria',
+                questoes: [
+                    {
+                        pergunta: 'Qual é o valor de sen(30°)?',
+                        alternativas: ['1/2', '√2/2', '√3/2', '1', '0'],
+                        correta: 0,
+                        explicacao: 'sen(30°) = 1/2 (valor decorado da tabela trigonométrica)'
+                    }
+                ]
+            }
+        };
+
+        // Variáveis globais
+        let temaAtual = '';
+        let questaoAtual = 0;
+        let respostasUsuario = [];
+        let cronometroInterval;
+        let tempoRestante = 900; // 15 minutos
+        let progresso = JSON.parse(localStorage.getItem('progressoMatematica')) || {};
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            atualizarDashboard();
+            carregarProgresso();
+        });
+
+        // Funções de Modal
+        function abrirVideo(tema) {
+            temaAtual = tema;
+            document.getElementById('tituloVideo').textContent = `📹 ${temas[tema].nome}`;
+            document.getElementById('temaVideo').textContent = temas[tema].nome;
+            document.getElementById('modalVideo').classList.add('active');
+        }
+
+        function abrirMapaMental(tema) {
+            temaAtual = tema;
+            document.getElementById('tituloMapa').textContent = `🧠 ${temas[tema].nome}`;
+            document.getElementById('temaMapa').textContent = temas[tema].nome;
+            document.getElementById('modalMapa').classList.add('active');
+        }
+
+        function abrirSimulado(tema) {
+            temaAtual = tema;
+            questaoAtual = 0;
+            respostasUsuario = [];
+            tempoRestante = 900;
+            
+            document.getElementById('tituloSimulado').textContent = `📝 Simulado - ${temas[tema].nome}`;
+            document.getElementById('totalQuestoes').textContent = temas[tema].questoes.length;
+            
+            document.getElementById('modalSimulado').classList.add('active');
+            carregarQuestao();
+            iniciarCronometro();
+        }
+
+        function fecharModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            if (modalId === 'modalSimulado') {
+                pararCronometro();
+            }
+        }
+
+        // Funções do Simulado
+        function carregarQuestao() {
+            const questao = temas[temaAtual].questoes[questaoAtual];
+            const questaoHtml = `
+                <div class="bg-slate-900 p-6 rounded-lg">
+                    <h4 class="text-lg font-semibold mb-4">${questao.pergunta}</h4>
+                    <div class="space-y-3">
+                        ${questao.alternativas.map((alt, index) => `
+                            <label class="flex items-center space-x-3 cursor-pointer hover:bg-slate-800 p-3 rounded">
+                                <input type="radio" name="resposta" value="${index}" class="text-blue-500">
+                                <span>${String.fromCharCode(65 + index)}) ${alt}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('questaoAtual').innerHTML = questaoHtml;
+            document.getElementById('numeroQuestao').textContent = questaoAtual + 1;
+            
+            // Restaurar resposta se já foi respondida
+            if (respostasUsuario[questaoAtual] !== undefined) {
+                const radio = document.querySelector(`input[value="${respostasUsuario[questaoAtual]}"]`);
+                if (radio) radio.checked = true;
+            }
+            
+            // Atualizar botões
+            document.getElementById('btnAnterior').disabled = questaoAtual === 0;
+            document.getElementById('btnProximo').textContent = 
+                questaoAtual === temas[temaAtual].questoes.length - 1 ? 'Finalizar' : 'Próxima →';
+        }
+
+        function proximaQuestao() {
+            // Salvar resposta atual
+            const respostaSelecionada = document.querySelector('input[name="resposta"]:checked');
+            if (respostaSelecionada) {
+                respostasUsuario[questaoAtual] = parseInt(respostaSelecionada.value);
+            }
+            
+            if (questaoAtual === temas[temaAtual].questoes.length - 1) {
+                finalizarSimulado();
+            } else {
+                questaoAtual++;
+                carregarQuestao();
+            }
+        }
+
+        function questaoAnterior() {
+            if (questaoAtual > 0) {
+                questaoAtual--;
+                carregarQuestao();
+            }
+        }
+
+        function finalizarSimulado() {
+            pararCronometro();
+            
+            // Calcular resultado
+            let acertos = 0;
+            const questoes = temas[temaAtual].questoes;
+            
+            for (let i = 0; i < questoes.length; i++) {
+                if (respostasUsuario[i] === questoes[i].correta) {
+                    acertos++;
+                }
+            }
+            
+            const percentual = Math.round((acertos / questoes.length) * 100);
+            const tempoGasto = 900 - tempoRestante;
+            
+            // Salvar progresso
+            if (!progresso[temaAtual]) progresso[temaAtual] = {};
+            progresso[temaAtual].simulado = true;
+            progresso[temaAtual].ultimoResultado = percentual;
+            progresso[temaAtual].tempoGasto = tempoGasto;
+            
+            salvarProgresso();
+            atualizarProgressoTema(temaAtual);
+            
+            // Mostrar resultado
+            const resultadoHtml = `
+                <div class="text-center">
+                    <div class="text-6xl mb-4">${percentual >= 70 ? '🎉' : percentual >= 50 ? '😊' : '😔'}</div>
+                    <h3 class="text-2xl font-bold mb-4">Simulado Finalizado!</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-green-600/20 p-4 rounded-lg border border-green-500/30">
+                            <div class="text-2xl font-bold text-green-400">${acertos}/${questoes.length}</div>
+                            <div class="text-sm text-gray-300">Acertos</div>
+                        </div>
+                        <div class="bg-blue-600/20 p-4 rounded-lg border border-blue-500/30">
+                            <div class="text-2xl font-bold text-blue-400">${percentual}%</div>
+                            <div class="text-sm text-gray-300">Aproveitamento</div>
+                        </div>
+                    </div>
+                    <button onclick="fecharModal('modalSimulado')" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-colors">
+                        Continuar Estudando
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('questaoAtual').innerHTML = resultadoHtml;
+            document.querySelector('.flex.justify-between').style.display = 'none';
+            
+            atualizarDashboard();
+        }
+
+        // Cronômetro
+        function iniciarCronometro() {
+            cronometroInterval = setInterval(() => {
+                tempoRestante--;
+                
+                const minutos = Math.floor(tempoRestante / 60);
+                const segundos = tempoRestante % 60;
+                
+                document.getElementById('cronometro').textContent = 
+                    `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+                
+                if (tempoRestante <= 0) {
+                    finalizarSimulado();
+                }
+            }, 1000);
+        }
+
+        function pararCronometro() {
+            if (cronometroInterval) {
+                clearInterval(cronometroInterval);
+            }
+        }
+
+        // Progresso
+        function marcarVideoAssistido() {
+            if (!progresso[temaAtual]) progresso[temaAtual] = {};
+            progresso[temaAtual].video = true;
+            salvarProgresso();
+            atualizarProgressoTema(temaAtual);
+            fecharModal('modalVideo');
+            
+            // Feedback visual
+            mostrarNotificacao('✅ Vídeo marcado como assistido!', 'success');
+        }
+
+        function marcarMapaEstudado() {
+            if (!progresso[temaAtual]) progresso[temaAtual] = {};
+            progresso[temaAtual].mapa = true;
+            salvarProgresso();
+            atualizarProgressoTema(temaAtual);
+            fecharModal('modalMapa');
+            
+            // Feedback visual
+            mostrarNotificacao('✅ Mapa mental estudado!', 'success');
+        }
+
+        function atualizarProgressoTema(tema) {
+            const prog = progresso[tema] || {};
+            let percentual = 0;
+            
+            if (prog.video) percentual += 33;
+            if (prog.mapa) percentual += 33;
+            if (prog.simulado) percentual += 34;
+            
+            const barraProgresso = document.querySelector(`[data-tema="${tema}"]`);
+            const textoProgresso = document.querySelector(`[data-tema="${tema}"]`).parentElement.nextElementSibling.querySelector('.progresso-texto');
+            
+            if (barraProgresso) {
+                barraProgresso.style.width = `${percentual}%`;
+            }
+            if (textoProgresso) {
+                textoProgresso.textContent = `${percentual}%`;
+            }
+        }
+
+        function carregarProgresso() {
+            Object.keys(progresso).forEach(tema => {
+                atualizarProgressoTema(tema);
+            });
+        }
+
+        function salvarProgresso() {
+            localStorage.setItem('progressoMatematica', JSON.stringify(progresso));
+        }
+
+        function atualizarDashboard() {
+            const temasComProgresso = Object.keys(progresso).filter(tema => {
+                const prog = progresso[tema];
+                return prog.video || prog.mapa || prog.simulado;
+            }).length;
+            
+            const simuladosFeitos = Object.values(progresso).filter(prog => prog.simulado).length;
+            
+            const resultados = Object.values(progresso)
+                .filter(prog => prog.ultimoResultado !== undefined)
+                .map(prog => prog.ultimoResultado);
+            
+            const acertoMedio = resultados.length > 0 
+                ? Math.round(resultados.reduce((a, b) => a + b, 0) / resultados.length)
+                : 0;
+            
+            const tempos = Object.values(progresso)
+                .filter(prog => prog.tempoGasto !== undefined)
+                .map(prog => prog.tempoGasto);
+            
+            const tempoMedio = tempos.length > 0
+                ? Math.round(tempos.reduce((a, b) => a + b, 0) / tempos.length / 60)
+                : 0;
+            
+            document.getElementById('temasEstudados').textContent = `${temasComProgresso}/10`;
+            document.getElementById('simuladosFeitos').textContent = simuladosFeitos;
+            document.getElementById('acertosMedios').textContent = `${acertoMedio}%`;
+            document.getElementById('tempoMedio').textContent = `${tempoMedio}min`;
+            
+            const progressoGeral = Math.round((temasComProgresso / 10) * 100);
+            document.getElementById('progressoGeral').textContent = `${progressoGeral}%`;
+        }
+
+        // Calculadora
+        function toggleCalculadora() {
+            const calc = document.getElementById('calculadora');
+            calc.style.display = calc.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function adicionarDisplay(valor) {
+            const display = document.getElementById('display');
+            if (display.value === '0' && valor !== '.') {
+                display.value = valor;
+            } else {
+                display.value += valor;
+            }
+        }
+
+        function limparCalculadora() {
+            document.getElementById('display').value = '0';
+        }
+
+        function apagarUltimo() {
+            const display = document.getElementById('display');
+            display.value = display.value.slice(0, -1) || '0';
+        }
+
+        function calcular() {
+            const display = document.getElementById('display');
+            try {
+                const resultado = eval(display.value.replace('×', '*').replace('÷', '/'));
+                display.value = resultado;
+            } catch (error) {
+                display.value = 'Erro';
+                setTimeout(() => display.value = '0', 1500);
+            }
+        }
+
+        // Notificações
+        function mostrarNotificacao(mensagem, tipo = 'info') {
+            const notificacao = document.createElement('div');
+            notificacao.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 ${
+                tipo === 'success' ? 'bg-green-600' : 
+                tipo === 'error' ? 'bg-red-600' : 'bg-blue-600'
+            } text-white`;
+            notificacao.textContent = mensagem;
+            
+            document.body.appendChild(notificacao);
+            
+            setTimeout(() => {
+                notificacao.remove();
+            }, 3000);
+        }
+
+        // Menu mobile
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            // Implementar menu mobile se necessário
+        });
+
+        // Fechar modais ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('active');
+                if (e.target.id === 'modalSimulado') {
+                    pararCronometro();
+                }
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98f1dfa78053f617',t:'MTc2MDU1ODEyMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

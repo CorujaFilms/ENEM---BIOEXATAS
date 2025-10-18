@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lousa Interativa com Undo/Redo</title>
+<style>
+  body {margin:0; background:#111; font-family:sans-serif; display:flex; flex-direction:column; align-items:center; color:#00fffc;}
+  header {width:100%; text-align:center; padding:20px; background:linear-gradient(90deg,#00fffc,#ff6ec7);}
+  header h1{margin:0; font-size:24px;}
+  #toolbar {margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;}
+  button, select, input[type=color], input[type=number]{padding:5px; border-radius:5px; border:none; cursor:pointer;}
+  canvas {border:2px solid #00fffc; border-radius:8px; background:#111; margin-top:10px;}
+</style>
+</head>
+<body>
+<header>
+<h1>Lousa Interativa</h1>
+</header>
+<div id="toolbar">
+  <button id="penBtn">Caneta Livre</button>
+  <button id="lineBtn">Ligar Pontos</button>
+  <button id="rectBtn">Quadrado</button>
+  <button id="circleBtn">Círculo</button>
+  <button id="textBtn">Texto</button>
+  <button id="fillBtn">Pintar</button>
+  <button id="eraserBtn">Borracha</button>
+  <button id="undoBtn">Desfazer</button>
+  <button id="redoBtn">Refazer</button>
+  <button id="clearBtn">Limpar</button>
+  <button id="saveBtn">Salvar</button>
+  Cor: <input type="color" id="colorPicker" value="#00fffc">
+  Tamanho: <input type="number" id="sizePicker" value="2" min="1" max="20">
+</div>
+<canvas id="board" width="800" height="500"></canvas>
+<script>
+const canvas = document.getElementById('board');
+const ctx = canvas.getContext('2d');
+let tool = 'pen';
+let drawing = false;
+let startX=0, startY=0;
+let points = [];
+let currentColor = document.getElementById('colorPicker').value;
+let lineWidth = parseInt(document.getElementById('sizePicker').value);
+
+// Pilhas para undo/redo
+let undoStack = [];
+let redoStack = [];
+function saveState(){
+  undoStack.push(canvas.toDataURL());
+  if(undoStack.length>50) undoStack.shift(); // limita a 50 passos
+  redoStack = [];
+}
+
+// Ferramentas
+const tools = {penBtn:'pen', lineBtn:'line', rectBtn:'rect', circleBtn:'circle', textBtn:'text', fillBtn:'fill', eraserBtn:'eraser'};
+for(const id in tools){
+  document.getElementById(id).addEventListener('click',()=>{tool=tools[id];});
+}
+
+// Atualiza cor e tamanho
+document.getElementById('colorPicker').addEventListener('input',(e)=>{currentColor=e.target.value;});
+document.getElementById('sizePicker').addEventListener('input',(e)=>{lineWidth=parseInt(e.target.value);});
+
+// Limpar
+document.getElementById('clearBtn').addEventListener('click',()=>{
+  saveState();
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+});
+
+// Undo/Redo
+function restoreState(stackFrom, stackTo){
+  if(stackFrom.length){
+    stackTo.push(canvas.toDataURL());
+    const imgData = stackFrom.pop();
+    const img = new Image();
+    img.onload = ()=>{ctx.clearRect(0,0,canvas.width,canvas.height); ctx.drawImage(img,0,0);};
+    img.src = imgData;
+  }
+}
+
+document.getElementById('undoBtn').addEventListener('click',()=>{restoreState(undoStack, redoStack);});
+document.getElementById('redoBtn').addEventListener('click',()=>{restoreState(redoStack, undoStack);});
+
+// Salvar
+document.getElementById('saveBtn').addEventListener('click',()=>{
+  const link = document.createElement('a');
+  link.download = 'lousa.png';
+  link.href = canvas.toDataURL();
+  link.click();
+});
+
+// Desenhar
+canvas.addEventListener('mousedown', e=>{
+  drawing=true;
+  startX = e.offsetX;
+  startY = e.offsetY;
+  saveState();
+  if(tool==='line') points.push([startX,startY]);
+  if(tool==='text'){
+    const text = prompt('Digite o texto:');
+    if(text){ctx.fillStyle=currentColor; ctx.font = `${lineWidth*5}px Arial`; ctx.fillText(text, startX, startY);}
+  }
+  if(tool==='fill'){ctx.fillStyle=currentColor; ctx.fillRect(startX,startY,50,50);}
+});
+
+canvas.addEventListener('mousemove', e=>{
+  if(!drawing) return;
+  const x=e.offsetX, y=e.offsetY;
+  ctx.strokeStyle=currentColor;
+  ctx.lineWidth=lineWidth;
+  ctx.fillStyle=currentColor;
+  if(tool==='pen'){ctx.beginPath(); ctx.moveTo(startX,startY); ctx.lineTo(x,y); ctx.stroke(); startX=x; startY=y;}
+  if(tool==='eraser'){ctx.clearRect(x-lineWidth, y-lineWidth, lineWidth*2, lineWidth*2);}
+});
+
+canvas.addEventListener('mouseup', e=>{
+  drawing=false;
+  const x=e.offsetX, y=e.offsetY;
+  ctx.strokeStyle=currentColor;
+  ctx.lineWidth=lineWidth;
+  switch(tool){
+    case 'line': points.push([x,y]); if(points.length>=2){ctx.beginPath(); ctx.moveTo(points[points.length-2][0], points[points.length-2][1]); ctx.lineTo(points[points.length-1][0], points[points.length-1][1]); ctx.stroke();} break;
+    case 'rect': ctx.strokeRect(startX,startY,x-startX,y-startY); break;
+    case 'circle': ctx.beginPath(); ctx.arc(startX,startY,Math.hypot(x-startX,y-startY),0,Math.PI*2); ctx.stroke(); break;
+  }
+});
+</script>
+</body>
+</html>

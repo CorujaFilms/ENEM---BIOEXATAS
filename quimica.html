@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulado de Química ENEM 2025 - Treino Rápido</title>
+<style>
+body{font-family:'Poppins',sans-serif;background:#f8fafc;margin:0;padding:0;color:#222;}
+main{max-width:900px;margin:auto;padding:20px;}
+h1{text-align:center;color:#0077b6;}
+.section-title{background:#caf0f8;padding:10px;border-left:5px solid #0077b6;margin-top:25px;color:#03045e;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:15px;margin-top:10px;}
+.card{background:white;padding:15px;border-radius:15px;box-shadow:0 3px 6px rgba(0,0,0,.1);transition:.3s;}
+.card:hover{transform:translateY(-3px);box-shadow:0 5px 10px rgba(0,0,0,.15);}
+.qnum{font-weight:bold;color:#0077b6;}
+.controls{margin-top:10px;display:flex;gap:8px;}
+button{border:none;padding:7px 10px;border-radius:10px;cursor:pointer;font-weight:bold;}
+.btn-show{background:#90e0ef;color:#000;}
+.btn-done{background:#48cae4;color:white;}
+.hint{display:none;margin-top:8px;padding:6px;background:#f1f1f1;border-left:4px solid #0077b6;border-radius:8px;}
+footer{text-align:center;margin-top:25px;padding:10px;font-size:.9em;color:#555;}
+.illustration img{width:40px;}
+</style>
+</head>
+<body>
+<main>
+<h1>⚗️ Simulado de Química ENEM 2025</h1>
+<p style="text-align:center;">Treine e memorize os conceitos mais cobrados em Química no ENEM.</p>
+
+<!-- ESTRUTURA ATÔMICA -->
+<h2 class="section-title">🔬 Estrutura Atômica e Tabela Periódica</h2>
+<section class="grid">
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/4144/4144722.png"></div>
+  <div class="qnum">1.</div><div class="question">O que são prótons, nêutrons e elétrons?</div>
+  <div class="controls"><button class="btn-show" data-hint="h1">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h1" class="hint">Dica: partículas fundamentais — próton(+) núcleo, nêutron(neutro) núcleo, elétron(-) eletrosfera.</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3330/3330160.png"></div>
+  <div class="qnum">2.</div><div class="question">Qual número identifica o elemento químico?</div>
+  <div class="controls"><button class="btn-show" data-hint="h2">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h2" class="hint">Dica: número atômico (Z) = quantidade de prótons.</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/2231/2231655.png"></div>
+  <div class="qnum">3.</div><div class="question">Como a tabela periódica está organizada?</div>
+  <div class="controls"><button class="btn-show" data-hint="h3">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h3" class="hint">Dica: em ordem crescente de número atômico.</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/5232/5232797.png"></div>
+  <div class="qnum">4.</div><div class="question">Qual tendência cresce na tabela: da esquerda p/ direita e de baixo p/ cima?</div>
+  <div class="controls"><button class="btn-show" data-hint="h4">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h4" class="hint">Dica: eletronegatividade e energia de ionização aumentam.</div></div>
+</section>
+
+<!-- LIGAÇÕES QUÍMICAS -->
+<h2 class="section-title">🧩 Ligações Químicas</h2>
+<section class="grid">
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3928/3928720.png"></div>
+  <div class="qnum">5.</div><div class="question">O que é uma ligação iônica?</div>
+  <div class="controls"><button class="btn-show" data-hint="h5">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h5" class="hint">Dica: transferência de elétrons entre metal e ametal (NaCl).</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/2982/2982128.png"></div>
+  <div class="qnum">6.</div><div class="question">E a ligação covalente?</div>
+  <div class="controls"><button class="btn-show" data-hint="h6">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h6" class="hint">Dica: compartilhamento de elétrons entre ametais (H₂O, CO₂).</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/2641/2641142.png"></div>
+  <div class="qnum">7.</div><div class="question">O que caracteriza a ligação metálica?</div>
+  <div class="controls"><button class="btn-show" data-hint="h7">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h7" class="hint">Dica: elétrons livres → condutividade e maleabilidade.</div></div>
+</section>
+
+<!-- REAÇÕES E BALANCEAMENTO -->
+<h2 class="section-title">⚖️ Reações Químicas e Balanceamento</h2>
+<section class="grid">
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/1130/1130944.png"></div>
+  <div class="qnum">8.</div><div class="question">Por que é preciso balancear uma equação química?</div>
+  <div class="controls"><button class="btn-show" data-hint="h8">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h8" class="hint">Dica: lei da conservação da massa — átomos antes = átomos depois.</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/2618/2618933.png"></div>
+  <div class="qnum">9.</div><div class="question">Como balancear? Qual passo inicial?</div>
+  <div class="controls"><button class="btn-show" data-hint="h9">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h9" class="hint">Dica: comece pelos elementos que aparecem uma vez de cada lado.</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/4213/4213843.png"></div>
+  <div class="qnum">10.</div><div class="question">Reação de síntese é...</div>
+  <div class="controls"><button class="btn-show" data-hint="h10">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h10" class="hint">Dica: duas ou mais substâncias → uma só (A + B → AB).</div></div>
+</section>
+
+<!-- ESTEQUIOMETRIA -->
+<h2 class="section-title">📏 Estequiometria</h2>
+<section class="grid">
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3093/3093759.png"></div>
+  <div class="qnum">11.</div><div class="question">O que é estequiometria?</div>
+  <div class="controls"><button class="btn-show" data-hint="h11">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h11" class="hint">Dica: cálculo das quantidades (mol, massa, volume) nas reações.</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3159/3159443.png"></div>
+  <div class="qnum">12.</div><div class="question">1 mol equivale a quantas partículas?</div>
+  <div class="controls"><button class="btn-show" data-hint="h12">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h12" class="hint">Dica: 6,02 × 10²³ partículas (Número de Avogadro).</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/5261/5261206.png"></div>
+  <div class="qnum">13.</div><div class="question">Como relacionar mol e massa?</div>
+  <div class="controls"><button class="btn-show" data-hint="h13">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h13" class="hint">Dica: n = m / M (mol = massa ÷ massa molar).</div></div>
+</section>
+
+<!-- GASES -->
+<h2 class="section-title">💨 Gases e Termoquímica</h2>
+<section class="grid">
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/1116/1116453.png"></div>
+  <div class="qnum">14.</div><div class="question">Lei dos gases ideais?</div>
+  <div class="controls"><button class="btn-show" data-hint="h14">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h14" class="hint">Dica: PV = nRT (pressão × volume = mol × constante × temperatura).</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/4318/4318323.png"></div>
+  <div class="qnum">15.</div><div class="question">O que é uma reação exotérmica?</div>
+  <div class="controls"><button class="btn-show" data-hint="h15">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h15" class="hint">Dica: libera calor (ΔH negativo).</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/2947/2947839.png"></div>
+  <div class="qnum">16.</div><div class="question">E uma endotérmica?</div>
+  <div class="controls"><button class="btn-show" data-hint="h16">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h16" class="hint">Dica: absorve calor (ΔH positivo).</div></div>
+</section>
+
+<!-- SOLUÇÕES -->
+<h2 class="section-title">🧴 Soluções e Misturas</h2>
+<section class="grid">
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/1048/1048903.png"></div>
+  <div class="qnum">17.</div><div class="question">O que é soluto e solvente?</div>
+  <div class="controls"><button class="btn-show" data-hint="h17">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h17" class="hint">Dica: soluto → substância dissolvida; solvente → quem dissolve (ex: água).</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/1095/1095536.png"></div>
+  <div class="qnum">18.</div><div class="question">Concentração comum (C) é calculada como?</div>
+  <div class="controls"><button class="btn-show" data-hint="h18">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h18" class="hint">Dica: C = massa do soluto / volume da solução (g/L).</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/3235/3235001.png"></div>
+  <div class="qnum">19.</div><div class="question">O que é diluição?</div>
+  <div class="controls"><button class="btn-show" data-hint="h19">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h19" class="hint">Dica: adicionar solvente → reduz concentração (M₁V₁ = M₂V₂).</div></div>
+</section>
+
+<!-- REVISÃO FINAL -->
+<h2 class="section-title">🧠 Revisão Final ENEM</h2>
+<section class="grid">
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/2092/2092688.png"></div>
+  <div class="qnum">20.</div><div class="question">pH menor que 7 indica o quê?</div>
+  <div class="controls"><button class="btn-show" data-hint="h20">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h20" class="hint">Dica: solução ácida.</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/1829/1829129.png"></div>
+  <div class="qnum">21.</div><div class="question">O que é oxirredução?</div>
+  <div class="controls"><button class="btn-show" data-hint="h21">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h21" class="hint">Dica: envolve transferência de elétrons (um oxida, outro reduz).</div></div>
+
+<div class="card"><div class="illustration"><img src="https://cdn-icons-png.flaticon.com/512/921/921591.png"></div>
+  <div class="qnum">22.</div><div class="question">Combustão é que tipo de reação?</div>
+  <div class="controls"><button class="btn-show" data-hint="h22">Mostrar dica</button><button class="btn-done">Já decorei</button></div>
+  <div id="h22" class="hint">Dica: reação com O₂ liberando energia (exotérmica).</div></div>
+</section>
+
+<footer>30 questões objetivas para revisar química — visualize, decore e domine 🔥</footer>
+</main>
+
+<script>
+document.querySelectorAll('.btn-show').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const hint=document.getElementById(btn.dataset.hint);
+    if(!hint)return;
+    hint.style.display=hint.style.display==='block'?'none':'block';
+    btn.textContent=hint.style.display==='block'?'Ocultar dica':'Mostrar dica';
+  });
+});
+document.querySelectorAll('.btn-done').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const c=btn.closest('.card');
+    c.style.opacity=c.style.opacity==='0.45'?'1':'0.45';
+  });
+});
+</script>
+</body>
+</html>

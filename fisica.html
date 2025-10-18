@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Física ENEM 2025 - Estudo Interativo</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { background: radial-gradient(circle at 20% 30%, #020617 0%, #0f172a 100%); color: white; }
+.gradient-text { background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.card { transition: all .3s ease; }
+.card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(59,130,246,.15); }
+.progress-bar { transition: width .5s ease; }
+</style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<header class="bg-slate-900/80 backdrop-blur-md border-b border-blue-500/20 py-4">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-6">
+    <h1 class="text-2xl font-bold gradient-text">⚡ Física ENEM 2025</h1>
+    <a href="index.html" class="text-blue-400 hover:underline">← Voltar ao Portal</a>
+  </div>
+</header>
+
+<main class="flex-grow max-w-6xl mx-auto px-6 py-10">
+  <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Principais Tópicos</h2>
+  
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="card bg-slate-800/60 p-6 rounded-2xl border border-blue-500/20">
+      <h3 class="text-xl font-bold text-cyan-400 mb-2">🏃‍♂️ Movimento Retilíneo</h3>
+      <p class="text-gray-300 text-sm mb-4">Velocidade, aceleração e gráficos de posição × tempo.</p>
+      <button onclick="abrir('movimento')" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg">Iniciar Treino</button>
+      <div class="mt-3 bg-slate-700 rounded-full h-2"><div class="bg-blue-500 h-2 rounded-full progress-bar" id="prog-mov" style="width:0%"></div></div>
+    </div>
+
+    <div class="card bg-slate-800/60 p-6 rounded-2xl border border-blue-500/20">
+      <h3 class="text-xl font-bold text-yellow-400 mb-2">⚙️ Leis de Newton</h3>
+      <p class="text-gray-300 text-sm mb-4">Inércia, força e ação-reação — base da mecânica clássica.</p>
+      <button onclick="abrir('newton')" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg">Iniciar Treino</button>
+      <div class="mt-3 bg-slate-700 rounded-full h-2"><div class="bg-yellow-500 h-2 rounded-full progress-bar" id="prog-newton" style="width:0%"></div></div>
+    </div>
+
+    <div class="card bg-slate-800/60 p-6 rounded-2xl border border-blue-500/20">
+      <h3 class="text-xl font-bold text-green-400 mb-2">🔋 Energia e Trabalho</h3>
+      <p class="text-gray-300 text-sm mb-4">Cinética, potencial e conservação de energia.</p>
+      <button onclick="abrir('energia')" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg">Iniciar Treino</button>
+      <div class="mt-3 bg-slate-700 rounded-full h-2"><div class="bg-green-500 h-2 rounded-full progress-bar" id="prog-energia" style="width:0%"></div></div>
+    </div>
+
+    <div class="card bg-slate-800/60 p-6 rounded-2xl border border-blue-500/20">
+      <h3 class="text-xl font-bold text-pink-400 mb-2">💡 Eletricidade</h3>
+      <p class="text-gray-300 text-sm mb-4">Corrente, resistência, potência e circuitos simples.</p>
+      <button onclick="abrir('eletricidade')" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg">Iniciar Treino</button>
+      <div class="mt-3 bg-slate-700 rounded-full h-2"><div class="bg-pink-500 h-2 rounded-full progress-bar" id="prog-eletricidade" style="width:0%"></div></div>
+    </div>
+
+    <!-- NOVO CARD: Fórmulas Essenciais -->
+    <div class="card bg-slate-800/60 p-6 rounded-2xl border border-blue-500/20">
+      <h3 class="text-xl font-bold text-indigo-400 mb-2">📚 Fórmulas Essenciais da Física</h3>
+      <p class="text-gray-300 text-sm mb-4">Acesse todas as fórmulas importantes para estudo rápido e revisão.</p>
+      <a href="formulasessenciaisdafisica.html" 
+         class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg inline-block">Abrir</a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="bg-slate-900/80 backdrop-blur-md border-t border-blue-500/20 py-6 text-center text-gray-400 text-sm">
+  <p>Projeto NEO ENEM © 2025 — Física Interativa</p>
+</footer>
+
+<!-- MODAL -->
+<div id="modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+  <div class="bg-slate-800 p-6 rounded-2xl max-w-lg w-full mx-4 border border-blue-500/20">
+    <h3 id="titulo" class="text-2xl font-bold gradient-text mb-4"></h3>
+    <p id="questao" class="text-gray-200 mb-4"></p>
+    <div id="alternativas" class="space-y-2 mb-4"></div>
+    <button onclick="fechar()" class="bg-green-600 hover:bg-green-700 px-6 py-2 rounded-lg">Fechar</button>
+  </div>
+</div>
+
+<script>
+const topicos = {
+  movimento: {
+    titulo: "🏃‍♂️ Movimento Retilíneo",
+    questoes: [
+      {q: "Um corpo percorre 100 m em 10 s. Sua velocidade média é:", a: ["5 m/s","10 m/s","15 m/s","20 m/s"], c:1},
+      {q: "A área sob o gráfico v × t representa:", a: ["Aceleração","Tempo","Distância","Energia"], c:2}
+    ]
+  },
+  newton: {
+    titulo: "⚙️ Leis de Newton",
+    questoes: [
+      {q: "A 1ª Lei de Newton é também chamada de:", a:["Ação e Reação","Inércia","Força Resultante","Gravitação"], c:1},
+      {q: "Força resultante nula implica:", a:["Movimento acelerado","Repouso ou MRU","Movimento circular","Variação de massa"], c:1}
+    ]
+  },
+  energia: {
+    titulo: "🔋 Energia e Trabalho",
+    questoes: [
+      {q: "Trabalho é nulo quando:", a:["Força paralela ao deslocamento","Força perpendicular","Velocidade constante","Energia aumenta"], c:1},
+      {q: "Energia potencial gravitacional depende de:", a:["Velocidade","Altura","Carga","Resistência"], c:1}
+    ]
+  },
+  eletricidade: {
+    titulo: "💡 Eletricidade",
+    questoes: [
+      {q: "A unidade de resistência elétrica é:", a:["Volt","Ohm","Ampère","Joule"], c:1},
+      {q: "Potência elétrica P é:", a:["P=V/I","P=V×I","P=I²/V","P=V²/I"], c:1}
+    ]
+  }
+};
+
+let progresso = JSON.parse(localStorage.getItem("progFisica")) || {};
+
+function abrir(id){
+  const modal=document.getElementById("modal");
+  const dados=topicos[id];
+  document.getElementById("titulo").textContent=dados.titulo;
+  const q = dados.questoes[Math.floor(Math.random()*dados.questoes.length)];
+  document.getElementById("questao").textContent=q.q;
+  document.getElementById("alternativas").innerHTML=q.a.map((alt,i)=>
+    `<button onclick="responder('${id}',${i},${q.c})" class='block w-full text-left bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded'>${String.fromCharCode(65+i)}) ${alt}</button>`
+  ).join("");
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+}
+
+function responder(topico, resp, correta){
+  const modal=document.getElementById("modal");
+  const msg=resp===correta ? "✅ Correto!" : "❌ Errado!";
+  document.getElementById("alternativas").innerHTML=`<p class='text-center text-lg mb-4'>${msg}</p><button onclick="fechar()" class='bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded'>Fechar</button>`;
+  progresso[topico]=(progresso[topico]||0)+50;
+  if(progresso[topico]>100) progresso[topico]=100;
+  document.getElementById("prog-"+topico).style.width=progresso[topico]+"%";
+  localStorage.setItem("progFisica",JSON.stringify(progresso));
+}
+
+function fechar(){
+  document.getElementById("modal").classList.add("hidden");
+}
+window.onload=()=>{for(let k in progresso){const p=document.getElementById("prog-"+k);if(p)p.style.width=progresso[k]+"%";}};
+</script>
+</body>
+</html>
